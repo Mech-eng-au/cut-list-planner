@@ -1,6 +1,4 @@
 """
-ui/widgets/axis_row.py
-
 _AxisRow — one row in the Sweep tab's axis configuration panel.
 
 Layout:
@@ -34,21 +32,39 @@ class AxisRow(Horizontal):
     AxisRow .axis-label {
         width: 5;
         padding: 0 1;
-        color: $text-muted;
+        color: $text;
+        text-style: bold;
     }
     AxisRow Select {
         width: 2fr;
         margin-right: 1;
         min-width: 14;
+        background: $background;
+        color: $text;
+        border: solid $primary;
+    }
+    AxisRow Select:focus {
+        border: solid $accent;
     }
     AxisRow Input {
         width: 1fr;
         margin-right: 1;
         min-width: 8;
+        background: $background;
+        color: $text;
+        border: solid $primary;
+    }
+    AxisRow Input:focus {
+        border: solid $accent;
     }
     AxisRow Button {
         min-width: 3;
         width: 3;
+    }
+    AxisRow Button.error {
+        background: $error;
+        color: white;
+        border: solid $error;
     }
     """
 
