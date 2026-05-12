@@ -1,6 +1,4 @@
 """
-ui/screens/project_browser.py
-
 Modal file browser scoped to the projects/ folder.
 """
 
@@ -37,7 +35,7 @@ class ProjectBrowserScreen(ModalScreen[str | None]):
         width: 70;
         height: 24;
         border: thick $accent;
-        background: $surface;
+        background: $secondary;
         padding: 1 2;
     }
     #browser-title {
@@ -47,24 +45,49 @@ class ProjectBrowserScreen(ModalScreen[str | None]):
         margin-bottom: 1;
     }
     #projects-label {
-        color: $text-muted;
+        color: $text;
         height: 1;
+        margin-bottom: 0;
     }
     #projects-list {
         height: 10;
-        border: tall $panel;
+        border: tall $primary;
         margin-bottom: 1;
     }
+    #projects-list .datatable--header {
+        background: $secondary;
+        color: white;
+        text-style: bold;
+    }
+    #projects-list .datatable--row:focus {
+        background: $primary;
+        color: white;
+    }
     #path-label {
-        color: $text-muted;
+        color: $text;
         height: 1;
         margin-top: 1;
+        margin-bottom: 0;
     }
     #file-path-input {
         margin-bottom: 1;
+        background: $background;
+        color: $text;
+        border: solid $primary;
+    }
+    #file-path-input:focus {
+        border: solid $accent;
     }
     #browser-actions Button {
         margin-right: 1;
+    }
+    Button.primary {
+        background: $primary;
+        color: white;
+        border: solid $primary;
+    }
+    Button:hover {
+        opacity: 0.8;
     }
     """
 
