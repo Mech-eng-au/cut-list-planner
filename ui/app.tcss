@@ -1,17 +1,179 @@
-/* ui/app.tcss
-   Global stylesheet for CutListApp.
-   Widget-level CSS lives in each widget's DEFAULT_CSS.
+/* ui/app.tcss - Modern Textual Theme for Cut-List Planner */
 
-   Key change: TabbedContent and TabPane both use height: 1fr so the
-   scrollable tab widgets (ProjectTab, ResultsTab, SweepTab) fill the
-   available terminal space and their ScrollableContainer overflow kicks in.
-*/
+:root {
+    --primary: #4a90d9;
+    --secondary: #2a5f8a;
+    --accent: #e67e22;
+    --background: #1e1e1e;
+    --text: #ecf0f1;
+    --success: #2ecc71;
+    --error: #e74c3c;
+    --warning: #f39c12;
+}
+
+Screen {
+    background: $background;
+    color: $text;
+}
+
+Header {
+    background: $primary;
+    color: white;
+    text-style: bold;
+    padding: 0 1;
+}
+
+Footer {
+    background: $secondary;
+    color: white;
+    padding: 0 1;
+}
 
 TabbedContent {
+    border: solid $primary;
     height: 1fr;
 }
 
 TabPane {
+    border: solid $accent;
     height: 1fr;
-    padding: 0;
+    padding: 1;
+}
+
+Tab {
+    background: $secondary;
+    color: white;
+    text-style: bold;
+}
+
+Tab:focus {
+    background: $primary;
+    color: white;
+}
+
+Tab:active {
+    background: $accent;
+    color: white;
+}
+
+Button {
+    background: $primary;
+    color: white;
+    border: solid $accent;
+    padding: 0 2;
+}
+
+Button:hover {
+    background: $accent;
+}
+
+Button:focus {
+    border: solid $warning;
+}
+
+Input {
+    background: $background;
+    color: $text;
+    border: solid $primary;
+    padding: 0 1;
+}
+
+Input:focus {
+    border: solid $accent;
+}
+
+Static {
+    color: $text;
+}
+
+Notification {
+    background: $primary;
+    color: white;
+    border: solid $accent;
+    padding: 1;
+}
+
+Notification.error {
+    background: $error;
+}
+
+Notification.success {
+    background: $success;
+}
+
+Notification.warning {
+    background: $warning;
+}
+
+HorizontalLine, VerticalLine {
+    color: $primary;
+}
+
+ScrollableContainer {
+    border: none;
+}
+
+ListView {
+    background: $background;
+    color: $text;
+}
+
+ListItem {
+    padding: 0 1;
+}
+
+ListItem:focus {
+    background: $primary;
+    color: white;
+}
+
+Label {
+    color: $text;
+    text-style: bold;
+}
+
+Select {
+    background: $background;
+    color: $text;
+    border: solid $primary;
+}
+
+Select:focus {
+    border: solid $accent;
+}
+
+DataTable {
+    background: $background;
+    color: $text;
+    border: solid $primary;
+}
+
+DataTable:focus {
+    border: solid $accent;
+}
+
+DataTable .datatable--header {
+    background: $secondary;
+    color: white;
+    text-style: bold;
+}
+
+DataTable .datatable--row:focus {
+    background: $primary;
+    color: white;
+}
+
+Dialog {
+    background: $background;
+    border: solid $primary;
+}
+
+Dialog Button {
+    background: $primary;
+    color: white;
+    border: solid $accent;
+}
+
+Dialog Button:hover {
+    background: $accent;
 }
