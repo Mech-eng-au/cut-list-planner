@@ -1,6 +1,4 @@
 """
-ui/tabs/project_tab.py
-
 Project tab — load/save TOML, edit stock (including price per bar),
 add/remove variables and parts.
 
@@ -42,11 +40,13 @@ class ProjectTab(ScrollableContainer):
         text-style: bold;
         margin-top: 1;
         margin-bottom: 0;
+        border-bottom: solid $primary;
     }
     .status-bar {
         height: 1;
         color: $success;
         margin-top: 1;
+        text-align: center;
     }
     #project-actions {
         height: 3;
@@ -58,6 +58,50 @@ class ProjectTab(ScrollableContainer):
     DataTable {
         height: auto;
         max-height: 12;
+        margin-bottom: 1;
+        border: solid $primary;
+    }
+    DataTable .datatable--header {
+        background: $secondary;
+        color: white;
+        text-style: bold;
+    }
+    DataTable .datatable--row:focus {
+        background: $primary;
+        color: white;
+    }
+    Button {
+        padding: 0 2;
+    }
+    Button.success {
+        background: $success;
+        color: white;
+        border: solid $success;
+    }
+    Button.error {
+        background: $error;
+        color: white;
+        border: solid $error;
+    }
+    Button:hover {
+        opacity: 0.8;
+    }
+    Input {
+        background: $background;
+        color: $text;
+        border: solid $primary;
+        padding: 0 1;
+    }
+    Input:focus {
+        border: solid $accent;
+    }
+    Label {
+        color: $text;
+        text-style: bold;
+    }
+    Static#project-status {
+        color: $text;
+        text-style: bold;
         margin-bottom: 1;
     }
     """
