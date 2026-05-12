@@ -1,0 +1,44 @@
+[project]
+name = "Shelf Unit"
+
+[stock]
+length_mm = 2400.0
+width_mm  = 44.0
+height_mm = 94.0
+kerf_mm   = 3.0
+
+[[variables]]
+name    = "shelf_width"
+formula = "800"
+
+[[variables]]
+name    = "shelf_depth"
+formula = "300"
+
+[[variables]]
+name    = "side_height"
+formula = "1800"
+
+[[variables]]
+name    = "num_shelves"
+formula = "5"
+
+[[parts]]
+label       = "Side panel"
+length_expr = "side_height"
+quantity    = 2
+
+[[parts]]
+label       = "Shelf"
+length_expr = "shelf_width"
+quantity    = 5
+
+[[parts]]
+label       = "Back rail"
+length_expr = "shelf_width"
+quantity    = 2
+
+[[parts]]
+label       = "Shelf support"
+length_expr = "shelf_depth"
+quantity    = 10

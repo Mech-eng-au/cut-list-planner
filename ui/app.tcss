@@ -1,0 +1,17 @@
+/* ui/app.tcss
+   Global stylesheet for CutListApp.
+   Widget-level CSS lives in each widget's DEFAULT_CSS.
+
+   Key change: TabbedContent and TabPane both use height: 1fr so the
+   scrollable tab widgets (ProjectTab, ResultsTab, SweepTab) fill the
+   available terminal space and their ScrollableContainer overflow kicks in.
+*/
+
+TabbedContent {
+    height: 1fr;
+}
+
+TabPane {
+    height: 1fr;
+    padding: 0;
+}

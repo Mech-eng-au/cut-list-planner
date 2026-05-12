@@ -1,0 +1,35 @@
+[project]
+name = "Braced Steel Frame"
+
+[stock]
+length_mm = 6000.0
+width_mm  = 90.0
+height_mm = 45.0
+kerf_mm   = 3.0
+
+[[variables]]
+name    = "height"
+formula = "2000"
+
+[[variables]]
+name    = "width"
+formula = "1200"
+
+[[variables]]
+name    = "brace"
+formula = "sqrt(height^2 + width^2)"
+
+[[parts]]
+label       = "Vertical"
+length_expr = "height"
+quantity    = 4
+
+[[parts]]
+label       = "Horizontal"
+length_expr = "width"
+quantity    = 3
+
+[[parts]]
+label       = "Diagonal brace"
+length_expr = "brace"
+quantity    = 2

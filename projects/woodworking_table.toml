@@ -1,0 +1,50 @@
+[project]
+name = "Woodworking table"
+
+[stock]
+length_mm = 2400.0
+width_mm  = 95.0
+height_mm = 45.0
+kerf_mm   = 3.0
+
+[[variables]]
+name    = "table_height"
+formula = "600"
+
+[[variables]]
+name    = "table_width"
+formula = "750"
+
+[[variables]]
+name    = "table_length"
+formula = "1180"
+
+[[parts]]
+label       = "Inner Leg"
+length_expr = "table_height - 10"
+quantity    = 4
+
+[[parts]]
+label       = "Outer Leg"
+length_expr = "table_height - bar_width"
+quantity    = 4
+
+[[parts]]
+label       = "Top Length Rail"
+length_expr = "table_length"
+quantity    = 2
+
+[[parts]]
+label       = "Top Width Rail"
+length_expr = "table_width - (bar_height * 2)"
+quantity    = 2
+
+[[parts]]
+label       = "Shelf Width Rail"
+length_expr = "table_width - (bar_height * 4)"
+quantity    = 2
+
+[[parts]]
+label       = "Shelf Length Rail"
+length_expr = "table_length - (bar_height * 4)"
+quantity    = 2
