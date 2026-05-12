@@ -1,6 +1,4 @@
 """
-ui/app.py
-
 CutListApp — the Textual application root.
 
 Mounts the three tabs (Project, Results, Sweep) inside a TabbedContent
@@ -42,9 +40,12 @@ class CutListApp(App):
     BINDINGS = [
         Binding("ctrl+q", "quit",        "Quit"),
         Binding("ctrl+s", "save",        "Save"),
-        Binding("f1",     "tab_project", "Project"),
-        Binding("f2",     "tab_results", "Results"),
-        Binding("f3",     "tab_sweep",   "Sweep"),
+        Binding("ctrl+tab", "next_tab", "Next Tab"),
+        Binding("ctrl+shift+tab", "prev_tab", "Previous Tab"),
+        Binding("f1",     "tab_project", "📁 Project"),
+        Binding("f2",     "tab_results", "📊 Results"),
+        Binding("f3",     "tab_sweep",   "🔄 Sweep"),
+        Binding("f12",    "help",        "Help"),
     ]
 
     def __init__(self, project_path: str | None = None) -> None:
@@ -54,11 +55,11 @@ class CutListApp(App):
     def compose(self) -> ComposeResult:
         yield Header()
         with TabbedContent(id="main-tabs"):
-            with TabPane("Project [F1]", id="tab-project"):
+            with TabPane("📁 Project [F1]", id="tab-project"):
                 yield ProjectTab()
-            with TabPane("Results [F2]", id="tab-results"):
+            with TabPane("📊 Results [F2]", id="tab-results"):
                 yield ResultsTab()
-            with TabPane("Sweep [F3]",   id="tab-sweep"):
+            with TabPane("🔄 Sweep [F3]",   id="tab-sweep"):
                 yield SweepTab()
         yield Footer()
 
@@ -104,3 +105,69 @@ class CutListApp(App):
 
     def action_tab_sweep(self) -> None:
         self.query_one("#main-tabs", TabbedContent).active = "tab-sweep"
+
+    def action_next_tab(self) -> None:
+        tabs = self.query_one("#main-tabs", TabbedContent)
+        current_index = tabs.panes.index(tabs.active_pane)
+        next_index = (current_index + 1) % len(tabs.panes)
+        tabs.active = tabs.panes[next_index].id
+
+    def action_prev_tab(self) -> None:
+        tabs = self.query_one("#main-tabs", TabbedContent)
+        current_index = tabs.panes.index(tabs.active_pane)
+        prev_index = (current_index - 1) % len(tabs.panes)
+        tabs.active = tabs.panes[prev_index].id
+
+    def action_help(self) -> None:
+        help_text = """
+[bold]Cut-List Planner Help[/bold]
+
+[dim]Navigation:[/dim]
+  [bold]Ctrl+Tab[/bold]    : Next Tab
+  [bold]Ctrl+Shift+Tab[/bold] : Previous Tab
+  [bold]F1[/bold]         : 📁 Project Tab
+  [bold]F2[/bold]         : 📊 Results Tab
+  [bold]F3[/bold]         : 🔄 Sweep Tab
+
+[dim]Actions:[/dim]
+  [bold]Ctrl+S[/bold]     : Save Project
+  [bold]Ctrl+Q[/bold]     : Quit
+
+[dim]Tips:[/dim]
+  Use [bold]Tab[/bold] to navigate between input fields.
+  Press [bold]Esc[/bold] to clear selections or close dialogs.
+        """
+        self.push_screen(HelpScreen(help_text))
+
+
+class HelpScreen(App.Screen):
+    """A simple help screen for CutListApp."""
+
+    DEFAULT_CSS = """
+    HelpScreen {
+        align: center middle;
+        background: $background;
+        color: $text;
+    }
+    
+    HelpScreen > Static {
+        width: 80%;
+        height: 80%;
+        background: $secondary;
+        color: white;
+        border: solid $primary;
+        padding: 2;
+        overflow-y: auto;
+    }
+    """
+
+    def __init__(self, help_text: str):
+        super().__init__()
+        self.help_text = help_text
+
+    def compose(self) -> ComposeResult:
+        yield Static(self.help_text, id="help-content")
+
+    def on_key(self, event) -> None:
+        if event.key == "escape":
+            self.app.pop_screen()
