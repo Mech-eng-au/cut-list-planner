@@ -1,6 +1,4 @@
 """
-ui/tabs/sweep_tab.py
-
 Sweep tab — configure parametric axes, run a sweep, display results.
 
 Now inherits from ScrollableContainer so all content is reachable
@@ -45,11 +43,12 @@ class SweepTab(ScrollableContainer):
         text-style: bold;
         margin-top: 1;
         margin-bottom: 0;
+        border-bottom: solid $primary;
     }
     #axes-container {
         height: auto;
         margin-bottom: 0;
-        border: tall $panel;
+        border: tall $primary;
         padding: 0 1;
     }
     #axes-header {
@@ -57,6 +56,7 @@ class SweepTab(ScrollableContainer):
         align: left middle;
         padding: 0 1;
         color: $text-muted;
+        background: $secondary;
     }
     #sweep-actions {
         height: 3;
@@ -70,24 +70,67 @@ class SweepTab(ScrollableContainer):
         height: 1;
         color: $accent;
         margin-top: 1;
+        text-align: center;
     }
     #sweep-eta {
         height: 1;
         color: $text-muted;
         margin-bottom: 1;
+        text-align: center;
     }
     #sweep-errors {
         height: 1;
         color: $error;
+        text-align: center;
     }
     #sweep-results-panel {
         height: auto;
         margin-bottom: 1;
+        border: tall $primary;
+        padding: 0 1;
     }
     #sweep-table {
         height: auto;
         min-height: 6;
         margin-bottom: 1;
+        border: solid $primary;
+    }
+    #sweep-table .datatable--header {
+        background: $secondary;
+        color: white;
+        text-style: bold;
+    }
+    #sweep-table .datatable--row:focus {
+        background: $primary;
+        color: white;
+    }
+    Button {
+        padding: 0 2;
+    }
+    Button.primary {
+        background: $primary;
+        color: white;
+        border: solid $primary;
+    }
+    Button.success {
+        background: $success;
+        color: white;
+        border: solid $success;
+    }
+    Button.error {
+        background: $error;
+        color: white;
+        border: solid $error;
+    }
+    Button:hover {
+        opacity: 0.8;
+    }
+    Static {
+        color: $text;
+    }
+    Label {
+        color: $text;
+        text-style: bold;
     }
     """
 
