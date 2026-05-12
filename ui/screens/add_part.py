@@ -1,6 +1,4 @@
 """
-ui/screens/add_part.py
-
 Modal screen for adding a new Part to the project.
 Dismissed with (label, expr, qty) on confirm, or None on cancel.
 """
@@ -23,8 +21,24 @@ class AddPartScreen(ModalScreen[tuple[str, str, int] | None]):
         width: 60;
         height: 13;
         border: thick $accent;
-        background: $surface;
+        background: $secondary;
         padding: 1 2;
+    }
+    #dialog Label {
+        color: $text;
+        text-style: bold;
+        margin-bottom: 1;
+    }
+    #dialog Button {
+        margin-right: 1;
+    }
+    Button.primary {
+        background: $primary;
+        color: white;
+        border: solid $primary;
+    }
+    Button:hover {
+        opacity: 0.8;
     }
     """
 
