@@ -1,6 +1,4 @@
 """
-ui/widgets/field_row.py
-
 A simple labelled-input row widget used throughout the Project tab
 and modal screens.
 """
@@ -21,10 +19,17 @@ class FieldRow(Horizontal):
     FieldRow Label {
         width: 18;
         padding: 0 1;
-        color: $text-muted;
+        color: $text;
+        text-style: bold;
     }
     FieldRow Input {
         width: 1fr;
+        background: $background;
+        color: $text;
+        border: solid $primary;
+    }
+    FieldRow Input:focus {
+        border: solid $accent;
     }
     """
 
