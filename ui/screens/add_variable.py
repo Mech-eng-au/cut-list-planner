@@ -1,6 +1,4 @@
 """
-ui/screens/add_variable.py
-
 Modal screen for adding a new Variable to the project.
 Dismissed with (name, formula) on confirm, or None on cancel.
 """
@@ -23,8 +21,24 @@ class AddVariableScreen(ModalScreen[tuple[str, str] | None]):
         width: 60;
         height: 11;
         border: thick $accent;
-        background: $surface;
+        background: $secondary;
         padding: 1 2;
+    }
+    #dialog Label {
+        color: $text;
+        text-style: bold;
+        margin-bottom: 1;
+    }
+    #dialog Button {
+        margin-right: 1;
+    }
+    Button.primary {
+        background: $primary;
+        color: white;
+        border: solid $primary;
+    }
+    Button:hover {
+        opacity: 0.8;
     }
     """
 
