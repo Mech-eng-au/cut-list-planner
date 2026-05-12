@@ -1,6 +1,4 @@
 """
-ui/tabs/results_tab.py
-
 Results tab — run solvers, show algorithm comparison, bar-by-bar cut plan,
 visual diagram, workshop cut sequence, and robustness score.
 
@@ -62,6 +60,7 @@ class ResultsTab(ScrollableContainer):
         height: 1;
         color: $accent;
         margin-bottom: 1;
+        text-align: center;
     }
     #results-top-panels {
         height: auto;
@@ -69,19 +68,19 @@ class ResultsTab(ScrollableContainer):
     }
     #comparison-panel {
         width: 2fr;
-        border: tall $panel;
+        border: tall $primary;
         padding: 0 1;
         height: auto;
     }
     #parts-panel {
         width: 1fr;
-        border: tall $panel;
+        border: tall $primary;
         padding: 0 1;
         height: auto;
         margin-left: 1;
     }
     #cutplan-header-panel {
-        border: tall $panel;
+        border: tall $primary;
         padding: 0 1;
         height: auto;
         margin-bottom: 1;
@@ -91,22 +90,34 @@ class ResultsTab(ScrollableContainer):
         text-style: bold;
         height: 1;
         margin-top: 1;
+        border-bottom: solid $primary;
     }
     #results-table {
         height: auto;
         max-height: 12;
         margin-bottom: 1;
+        border: solid $primary;
+    }
+    #results-table .datatable--header {
+        background: $secondary;
+        color: white;
+        text-style: bold;
+    }
+    #results-table .datatable--row:focus {
+        background: $primary;
+        color: white;
     }
     #diagram-heading {
         color: $accent;
         text-style: bold;
         height: 1;
+        border-bottom: solid $primary;
     }
     #diagram-scroll {
         /* Enough rows to see most diagrams without scrolling internally;
            still scrollable for very long cut plans. */
         height: 20;
-        border: tall $panel;
+        border: tall $primary;
         margin-bottom: 1;
     }
     BarDiagramWidget {
@@ -122,16 +133,42 @@ class ResultsTab(ScrollableContainer):
     /* ------------------------------------------------------------------ */
     #sequence-panel {
         width: 2fr;
-        border: tall $panel;
+        border: tall $primary;
         padding: 0 1;
         height: auto;
     }
     #robustness-panel {
         width: 1fr;
-        border: tall $panel;
+        border: tall $primary;
         padding: 0 1;
         height: auto;
         margin-left: 1;
+    }
+    Button {
+        padding: 0 2;
+    }
+    Button.primary {
+        background: $primary;
+        color: white;
+        border: solid $primary;
+    }
+    Button:hover {
+        opacity: 0.8;
+    }
+    Select {
+        background: $background;
+        color: $text;
+        border: solid $primary;
+    }
+    Select:focus {
+        border: solid $accent;
+    }
+    Static {
+        color: $text;
+    }
+    Label {
+        color: $text;
+        text-style: bold;
     }
     """
 
