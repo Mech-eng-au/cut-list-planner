@@ -1,6 +1,4 @@
 """
-ui/widgets/bar_diagram.py
-
 BarDiagramWidget — a proportional block-character cut diagram.
 
 Each stock bar is rendered as three lines:
@@ -98,9 +96,9 @@ class BarDiagramWidget(Widget):
     # ------------------------------------------------------------------
 
     def _render_legend(self, width: int) -> Strip:
-        st_piece = Style.parse("bold cyan")
+        st_piece = Style.parse("bold #4a90d9")
         st_kerf  = Style.parse("dim")
-        st_waste = Style.parse("bold red")
+        st_waste = Style.parse("bold #e74c3c")
         st_plain = Style.parse("")
         segs = [
             Segment("  Legend: ", st_plain),
@@ -129,7 +127,7 @@ class BarDiagramWidget(Widget):
         )
         label   = label[:width]
         padding = max(0, width - len(label))
-        st      = Style.parse("bold green" if highlight else "bold")
+        st      = Style.parse("bold #2ecc71" if highlight else "bold #4a90d9")
         return Strip([Segment(label, st), Segment(" " * padding, st)], width)
 
     def _render_bar_graphic(
@@ -138,11 +136,11 @@ class BarDiagramWidget(Widget):
         r        = self._result
         bar_mm   = r.problem.bar_length
         kerf_mm  = r.problem.kerf
-        st_piece = Style.parse("bold cyan")
+        st_piece = Style.parse("bold #4a90d9")
         st_kerf  = Style.parse("dim white")
-        st_waste = Style.parse("red")
-        st_hl    = Style.parse("bold green")
-        border   = Style.parse("bold green" if highlight else "dim")
+        st_waste = Style.parse("#e74c3c")
+        st_hl    = Style.parse("bold #2ecc71")
+        border   = Style.parse("bold #2ecc71" if highlight else "dim")
 
         diagram_w = max(4, width - 2)
 
